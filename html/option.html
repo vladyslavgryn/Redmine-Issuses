@@ -3,7 +3,7 @@
     <head>
         <title>Redmine Issuses</title>
         <script src="../lib/jquery-3.1.0.min.js"></script>
-        <script src="option.js"></script>
+        <script src="../js/option.js"></script>
         <style>
             body {
                 padding: 10px;
@@ -26,6 +26,10 @@
                 text-align: center;
                 margin-top: 20px;
             }
+            .input {
+                text-align: left;
+                margin-top: 10px;
+            }
         </style>
     </head>
     
@@ -38,9 +42,13 @@
             <p>Pole nie może być puste</p>
         </div>
 
-        <div>
+        <div class="input">
             <label for="url">Adres pobrania danych</label>
-            <input type="text" id="url" name="url">
+            <input type="url" id="url" name="url">
+        </div>
+        <div class="input">
+            <label for="delay">Odświeżanie dancyh (ms)</label>
+            <input type="number" id="delay" name="delay" min="1000" max="10000">
         </div>
 
         <div class='center'>
