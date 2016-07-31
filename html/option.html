@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Redmine Issuses</title>
+        <script src="../lib/jquery-3.1.0.min.js"></script>
+        <script src="option.js"></script>
+        <style>
+            body {
+                padding: 10px;
+            }
+            .status {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+            .success {
+                color: green;
+                background: #c6ffb3;
+                border: 1px solid #009900;
+            }
+            .error {
+                color: red;
+                background: #ffb3b3;
+                border: 1px solid #e60000;     
+            }
+            .center {
+                text-align: center;
+                margin-top: 20px;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <div class="status success" style="display: none;">
+            <p>Dane zostały zapisane</p>
+        </div>
+
+         <div class="status error" style="display: none;">
+            <p>Pole nie może być puste</p>
+        </div>
+
+        <div>
+            <label for="url">Adres pobrania danych</label>
+            <input type="text" id="url" name="url">
+        </div>
+
+        <div class='center'>
+            <button id="save">Zapisz</button>
+        </div>
+        
+    </body>
+   
+</html>

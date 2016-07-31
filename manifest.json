@@ -1,0 +1,37 @@
+{
+    "manifest_version": 2,
+
+    "name": "Redmine Issuses",
+    "description": "Wyświetla nowo dodane zgłoszenia Redmine",
+    "version": "0.1",
+    "homepage_url": "http://192.168.3.12",
+    "icons": {
+        "48": "images/icon48.png"
+    },
+
+    "browser_action": {
+        "default_popup": "html/popup.html",
+        "default_icons": {
+            "16": "images/icon16",
+            "48": "images/icon48",
+            "128": "images/icon128"
+        },
+        "default_title": "Pobieranie nowych zgłoszeń"
+    },
+
+    "options_ui": {
+        "page": "html/option.html",
+        "chrome_style": true
+    },
+
+    "content_scripts": [ 
+        {
+            "js": [ "lib/jquery-3.1.0.min.js" ],
+            "matches": [ "http://*/*", "https://*/*" ]
+        }
+    ],
+
+    "permissions": [
+        "storage"
+    ]
+}
