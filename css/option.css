@@ -1,0 +1,25 @@
+body {
+    padding: 10px;
+}
+.status {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.success {
+    color: green;
+    background: #c6ffb3;
+    border: 1px solid #009900;
+}
+.error {
+    color: red;
+    background: #ffb3b3;
+    border: 1px solid #e60000;     
+}
+.center {
+    text-align: center;
+    margin-top: 20px;
+}
+.input {
+    text-align: left;
+    margin-top: 10px;
+}

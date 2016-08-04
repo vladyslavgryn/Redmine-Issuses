@@ -1,3 +1,8 @@
+chrome.browserAction.onClicked.addListener(function() {
+    showNotification('Runtime');
+});
+
+
 function getServerUrl() {
     chrome.storage.local.get({ url: '192.168.3.14'}, function(item) {
     });

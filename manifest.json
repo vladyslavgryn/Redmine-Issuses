@@ -11,7 +11,7 @@
     },
 
     "options_ui": {
-        "page": "html/option.html",
+        "page": "views/option.html",
         "chrome_style": true
     },
 
@@ -21,11 +21,12 @@
             "48": "images/icon48",
             "128": "images/icon128"
         },
-        "default_title": "Pobieranie nowych zgłoszeń"
+        "default_title": "Pobieranie nowych zgłoszeń",
+        "default_popup": "views/popup.html"
     },
 
     "background": {
-        "scripts": ["js/background.js"],
+        "scripts": ["src/background.js"],
         "persistent": false
     },
 
