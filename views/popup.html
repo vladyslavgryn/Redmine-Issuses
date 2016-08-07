@@ -3,6 +3,8 @@
     <head>
         <title>Redmine Issuses</title>
         <link rel="stylesheet" type="text/css" href="../css/popup.css">
+        <script src="../lib/jquery-3.1.0.min.js"></script>
+        <script src="../src/popup.js"></script>
     </head>
     
     <body>
@@ -15,29 +17,33 @@
             <div id="statistic">
                 <div class="header">Dzisiejsze zgloszenia: </div>
                 <div>
-                    <div id="new_issuses">
-                        <span class="count">11</span> nowych
+                    <div>
+                        <span id="new_issuses" class="count">0</span> nowych
                     </div>
                     
-                    <div id="today_issuses">
-                        <span class="count">111 230</span> wszytkich
+                    <div>
+                        <span id="today_issuses" class="count">0</span> wszytkich
                     </div>
                 </div>    
             </div>
 
             <div id="issuses">
                 <ul>
-                    <li class="entery">#321 Bład sql</li>
-                    <li class="entery">#3211 Bład książki pocztowej</li>
-                    <li class="entery">#142 Bład migracji</li>
+                    <li class="entery"><span class='new'>#321</span> Bład sql</li>
+                    <li class="entery"><span class='new'>#3211</span> Bład książki pocztowej</li>
+                    <li class="entery"><span class='new'>#142</span> Bład migracji</li>
                 </ul>
             </div>
 
             <div class="separator"></div>
 
-            <div id="options">
-                <div class="entery">Opcje</div>
-                <div class="entery">Ukryj przycisk</div>
+            <div id="settings">
+                <div id="options" class="entery">Opcje</div>
+                <div id="hide_icon" class="entery">Ukryj przycisk</div>
+                <div class="info" style="display: none;">
+                    Aby ukryć przycisk, kliknij prawym przyciskiem myszy na ikonie Redmine Issuses a następnie wybierz "Ukryj przycisk".
+                    Możesz ponownie włączyć pokazywanie go pod adresem chrome://extensions/.
+                </div>
             </div>
 
             <div class="separator"></div>

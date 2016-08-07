@@ -11,7 +11,7 @@
     },
 
     "options_ui": {
-        "page": "views/option.html",
+        "page": "views/options.html",
         "chrome_style": true
     },
 
@@ -37,6 +37,7 @@
     "permissions": [
         "storage",
         "notifications",
-        "alarms"
+        "alarms",
+        "http://*/"
     ]
 }

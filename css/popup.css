@@ -7,7 +7,7 @@ body {
     width: 250px;
     min-height: 200px;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 12px;
+    font-size: 13px;
 }
 
 .entery:hover {
@@ -47,7 +47,11 @@ body {
     cursor: pointer;
 }
 
-#options div {
+.new {
+    color: dodgerblue;
+}
+
+#settings div {
     padding: 3px 2px 3px 10px;
     cursor: pointer;
 }
@@ -60,7 +64,13 @@ body {
 }
 
 a:hover {
-  color: red;
+  color: crimson;
+}
+
+.info {
+    background: #f7f6f2;
+    margin: 10px;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.10);
 }
 
 .separator {

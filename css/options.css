@@ -23,3 +23,8 @@ body {
     text-align: left;
     margin-top: 10px;
 }
+
+label {
+    width: 150px;
+    display: inline-block;
+}
