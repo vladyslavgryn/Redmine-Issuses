@@ -9,6 +9,7 @@ $(document).ready(function() {
 var popup = (function() {
     
     var $info;
+    var message = 'getIssusesCount';
     
     var init = function() {
         $info = $('.info');
@@ -40,11 +41,14 @@ var popup = (function() {
     },
 
     getResponse = function() {
-        chrome.runtime.sendMessage({ request: "issuses" }, function(response) {
-            $todayIssuses.text(response.today_issuses);
-            $newIssuses.text(response.new_issuses);
-        });
-    }
+        chrome.runtime.sendMessage(message, _responseCallback);
+    },
+
+    _responseCallback = function(response) {
+        console.log(response);
+        $todayIssuses.text(response.today_issuses);
+        $newIssuses.text(response.new_issuses);
+    };
 
     return {
         'hideBrowserAction' : hideBrowserAction,

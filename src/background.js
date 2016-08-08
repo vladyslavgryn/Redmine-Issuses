@@ -1,24 +1,42 @@
-var xhr = new XMLHttpRequest();
+chrome.alarms.create('getIssuses', { when : Date.now() + 6000, periodInMinutes : 1 });
+chrome.alarms.onAlarm.addListener(_alarmCallback);
+chrome.runtime.onMessage.addListener(_onMessageCallback);
 
-function showNotification(author, message) {
-
-    var opt = {
-        type: "basic",
-        title: "Dodano nowe zgłoszenie",
-        message: author,
-        contextMessage: message,
-        iconUrl: "images/icon48.png"
-    };
-
-    chrome.notifications.create('', opt, function(id) {
-        if (chrome.runtime.lastError) {
-            console.log(chrome.runtime.lastError.message);
-            return;
-        }
-        chrome.browserAction.setBadgeText({text: '1'});
-    });
+/**
+ * Callback onAlarm
+ */
+function _alarmCallback(alarm) {
+    if (alarm.name === 'getIssuses') {
+        console.log(alarm);
+        _showNotification();
+    }
 }
-function getCurrentDate() {
+
+/**
+ * Callback onMessage
+ */
+function _onMessageCallback(message, sender, sendResponse) {
+    if (message === 'getIssusesCount') {
+        chrome.storage.local.get(['host', 'key'], function(item) {
+            var url = `${item.host}/issues.json?created_on=${_getCurrentDate()}&status_id=*&key=${item.key}`;
+            var promise = _getIssusesAsync(url);
+            promise.then(function(success) {
+                var resp = JSON.parse(success);
+                sendResponse({ today_issuses : 12, new_issuses : resp.total_count });
+            }, function(error) {
+                console.log(error);
+            });
+                   
+        });
+        return true;
+    }
+}
+
+/**
+ * Generate current date
+ * @return string
+ */
+function _getCurrentDate() {
     var today = new Date();
     var dd = today.getDate();
     var mm = today.getMonth() + 1;
@@ -34,24 +52,43 @@ function getCurrentDate() {
 
     return `${yyyy}-${mm}-${dd}`;
 }
-chrome.storage.local.get(['host', 'key'], function(item) {
-    var url = `${item.host}/issues.json?created_on=2016-08-04&key=${item.key}`;
-    
-    xhr.open('GET', url, true);
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-            var response = JSON.parse(xhr.responseText);
-            chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
-                if (request.request == "issuses") {
-                    console.log(response.total_count);
-                    sendResponse({
-                        today_issuses: response.total_count,
-                        new_issuses: response.total_count
-                    });
-                }
-            });
-        }
+
+function _showNotification() {
+
+    var opt = {
+        type: "basic",
+        title: "Dodano nowe zgłoszenie",
+        message: 'asdasdasd',
+        contextMessage: 'asdasds',
+        iconUrl: "images/icon48.png"
     };
-    xhr.send();       
-});
+
+    chrome.notifications.create('', opt, function(id) {
+        if (chrome.runtime.lastError) {
+            console.log(chrome.runtime.lastError.message);
+            return;
+        }
+        chrome.browserAction.setBadgeText({text: '1'});
+    });
+}
+
+
+function _getIssusesAsync(url) {
+    return new Promise(function(resolve, reject) {
+        var xhr = new XMLHttpRequest();
+
+        xhr.open('GET', url, true);
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                resolve(xhr.response);     
+            } else {
+                reject('Błąd pobierania danych');
+            }
+        };
+        xhr.onerror = function() {
+            reject('Błąd pobierania danych');
+        };
+        xhr.send();
+    });
+}
 
