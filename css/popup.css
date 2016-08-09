@@ -11,8 +11,9 @@ body {
 }
 
 .entery:hover {
-  -webkit-transition: all 0.3s ease-out;
-  background: #e6e6e6;
+    -webkit-transition: all 0.3s ease-out;
+    background: #e6e6e6;
+    cursor: pointer;
 }
 
 #title {
@@ -23,13 +24,17 @@ body {
 
 #statistic {
     background: #f7f6f2;
-    padding: 10px;
+    padding-bottom: 5px;
     box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.10);
+}
+
+#statistic .entery {
+    padding: 2px 2px 2px 10px;
 }
 
 .header {
     font-weight: bold;
-    margin: 5px 0 5px 0;
+    padding: 5px 2px 2px 10px;
 }
 
 .count {
@@ -37,14 +42,13 @@ body {
     font-weight: bold;
 }
 
-#issuses ul {
+#issues ul {
     list-style-type: none;
     padding: 0;
 }
 
-#issuses ul li {
+#issues ul li {
     padding: 3px 2px 3px 10px;
-    cursor: pointer;
 }
 
 .new {
@@ -53,7 +57,6 @@ body {
 
 #settings div {
     padding: 3px 2px 3px 10px;
-    cursor: pointer;
 }
 
 .footer a {
@@ -64,7 +67,7 @@ body {
 }
 
 a:hover {
-  color: crimson;
+    color: crimson;
 }
 
 .info {
@@ -77,4 +80,8 @@ a:hover {
     width: 100%;
     border-top: 2px groove white;
     margin: 10px 0 10px 0;
+}
+
+.alert {
+    color: red;
 }

@@ -1,10 +1,10 @@
 {
     "manifest_version": 2,
 
-    "name": "Redmine Issuses",
+    "name": "Redmine Issues",
     "description": "Wyświetla nowo dodane zgłoszenia Redmine",
     "homepage_url": "http://192.168.3.12",
-    "version": "0.1",
+    "version": "1.0",
 
     "icons": {
         "16": "images/icon16.png",
